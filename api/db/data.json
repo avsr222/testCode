@@ -1,0 +1,36 @@
+{
+    "employee": {
+        "1": {
+            "id": 1,
+            "firstName": "Prasanna",
+            "lastName": "",
+            "hireDate": "",
+            "role": "",
+            "CEO": ""
+        },
+        "2": {
+            "id": 2,
+            "firstName": "Prasanth",
+            "lastName": "",
+            "hireDate": "",
+            "role": "",
+            "LACKEY": ""
+        },
+        "3": {
+            "id": 3,
+            "firstName": "CP",
+            "lastName": "",
+            "hireDate": "",
+            "role": "rvgger",
+            "LACKEY": ""
+        },
+        "4": {
+            "id": 4,
+            "firstName": "VASU",
+            "lastName": "",
+            "hireDate": "",
+            "role": "",
+            "LACKEY": ""
+        }
+    }
+}

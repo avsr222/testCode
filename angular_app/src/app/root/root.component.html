@@ -1,0 +1,70 @@
+<div>
+  <p>Employee List</p>
+  <button (click) = openModal(false)>Add New</button>
+  <div class="container">
+    <table class="table table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let el of elements" [attr.id]="el.id">
+          <td>{{el.firstName}}</td>
+          <td>{{el.lastName}}</td>
+          <td>{{el.hireDate}}</td>
+          <td class="hand" (click)="openModal(el.id)">Edit</td>
+          <td class="hand" (click)="deleteEmployee(el.id)">Delete</td>
+        </tr>
+        <div class="spinner-border" [ngStyle]="{'display':spinnerDisplay}" ></div>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal section -->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+      <div>
+
+      </div>
+      <h4 class="modal-title">Selected Employee Details</h4>
+       <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+     </div>
+     <div class="modal-body" >
+        <div *ngIf="edit=='true'">
+          <div *ngFor="let key of keys">
+            <div *ngIf="key!='id'">
+              <label for="fname">{{key}}</label><br>
+              <input type="text" value={{employeeData[key]}} (input)="onChangedValue($event.target.value, key)">
+            </div>
+          </div>
+        </div>
+        
+        <div *ngIf="edit!='true'" >
+          <label for="fname">First Name</label><br>
+          <input type="text" value="" (input)="onInsertValue($event.target.value, 'firstName')"><br>
+          <label for="lname">Last Name</label><br>
+          <input type="text" value="" (input)="onInsertValue($event.target.value, 'lastName')"><br>
+          <label for="role">Role</label><br>
+          <input type="text" value="" (input)="onInsertValue($event.target.value, 'role')"><br>
+          <label for="hireDate">Hiring Date</label><br>
+          <input type="text" value="" (input)="onInsertValue($event.target.value, 'hireDate')"><br>
+        </div>
+     </div>
+      <div class="modal-footer" *ngIf="edit=='true'">
+        <button type="button" class="btn btn-default" (click)="updateEmployee()" >Update</button>
+      </div>
+      <div class="modal-footer" *ngIf="edit!='true'">
+        <button type="button" class="btn btn-default" (click)="addNewEmployee()" >Create</button>
+      </div>
+      
+     
+   </div>
+ </div>
+</div>
+
+
